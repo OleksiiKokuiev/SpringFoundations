@@ -1,5 +1,8 @@
 package quoters;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class T1000 extends TerminatorQuoter {
     @Override
     public void sayQuote() {

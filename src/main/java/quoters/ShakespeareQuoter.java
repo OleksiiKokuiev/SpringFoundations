@@ -1,9 +1,16 @@
 package quoters;
 
 import framework.RunThisMethod;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+@Scope(BeanDefinition.SCOPE_PROTOTYPE)
+@Component
 public class ShakespeareQuoter implements Quoter {
 
+    @Value("${shakespeareQuote}")
     private String message;
 
     public void setMessage(String message) {
