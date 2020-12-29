@@ -14,12 +14,17 @@ import java.util.Random;
 public class Config {
 
     @Bean(destroyMethod = "toString", initMethod = "getName")
-    @Scope(BeanDefinition.SCOPE_PROTOTYPE)
+    @Scope(BeanDefinition.SCOPE_SINGLETON)
     public ColoredFrame frame(){
-        return new ColoredFrame();
+        return new ColoredFrame() {
+            @Override
+            public Color getColor() {
+                return randomColor();
+            }
+        };
     }
     @Bean
-    @Scope("prototype")
+    @Scope(BeanDefinition.SCOPE_PROTOTYPE)
     public Color randomColor(){
         Random random = new Random();
         return new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255));
