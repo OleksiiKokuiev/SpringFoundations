@@ -1,5 +1,6 @@
 package quoters;
 
+import aspects.aop.DatabaseRuntimeException;
 import framework.RunThisMethod;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -22,7 +23,9 @@ public class ShakespeareQuoter implements Quoter {
     }
 
     @RunThisMethod(repeat = 3)
-    public void sayQuote() {
+    public void sayQuote() throws DatabaseRuntimeException {
+
         System.out.println(message);
+        throw new DatabaseRuntimeException("fire all dba");
     }
 }

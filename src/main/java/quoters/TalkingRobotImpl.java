@@ -1,5 +1,6 @@
 package quoters;
 
+import aspects.aop.DatabaseRuntimeException;
 import framework.Benchmark;
 import framework.RunThisMethod;
 import framework.Transaction;
@@ -9,16 +10,16 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.util.List;
 
-@Transaction
+//@Transaction
 @Component
 public class TalkingRobotImpl implements TalkingRobot {
 
     @Autowired
     private List<Quoter> quoters;
 
-    @Benchmark
+    //@Benchmark
     @Override
-    public void talk() {
+    public void talk() throws DatabaseRuntimeException {
         for (Quoter quote : quoters){
             quote.sayQuote();
         }
