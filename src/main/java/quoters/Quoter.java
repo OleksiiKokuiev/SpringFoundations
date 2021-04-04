@@ -1,5 +1,7 @@
 package quoters;
 
+import aspects.aop.DatabaseRuntimeException;
+
 public interface Quoter {
-    void sayQuote();
+    void sayQuote() throws DatabaseRuntimeException;
 }
